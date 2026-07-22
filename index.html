@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RUTH JEWELS | Jewels That Empower Every Story</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream-white: oklch(97.5% 0.006 78);
+  --cream: oklch(94% 0.012 78);
+  --cream-warm: oklch(91% 0.018 76);
+  --gold-pale: oklch(82% 0.06 78);
+  --gold-light: oklch(75% 0.09 76);
+  --gold: oklch(65% 0.12 72);
+  --gold-rich: oklch(55% 0.11 68);
+  --gold-dark: oklch(42% 0.08 62);
+  --brown-soft: oklch(35% 0.04 58);
+  --brown-deep: oklch(22% 0.02 55);
+  --text-body: oklch(30% 0.015 60);
+  --text-muted: oklch(50% 0.015 68);
+  --text-faint: oklch(62% 0.01 72);
+  --border: oklch(89% 0.012 76);
+  --surface: oklch(96% 0.005 78);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', system-ui, sans-serif;
+  background: var(--cream-white);
+  color: var(--text-body);
+  font-optical-sizing: auto;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Cormorant Garamond', serif;
+  text-wrap: balance;
+  font-weight: 400;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--gold-pale); border-radius: 3px; }
+
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.4s var(--ease-quart);
+}
+
+.header.scrolled {
+  background: oklch(97% 0.006 78 / 0.94);
+  backdrop-filter: blur(16px);
+  padding: 12px 40px;
+  box-shadow: 0 1px 0 var(--border);
+}
+
+.header-logo {
+  height: 52px;
+  width: auto;
+  transition: height 0.3s var(--ease-quart);
+}
+
+.header.scrolled .header-logo { height: 42px; }
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.header-nav a {
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.25s;
+}
+
+.header-nav a:hover { color: var(--gold-rich); }
+
+.header-dm {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: var(--gold);
+  color: var(--cream-white);
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.25s var(--ease-quart);
+}
+
+.header-dm:hover {
+  background: var(--gold-rich);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px oklch(55% 0.1 70 / 0.2);
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 32px 80px;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, oklch(93% 0.015 78), var(--cream-white));
+  position: relative;
+}
+
+.hero-logo {
+  width: clamp(180px, 25vw, 280px);
+  height: auto;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: heroReveal 1.2s var(--ease-expo) 0.2s forwards;
+}
+
+.hero-title {
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 300;
+  color: var(--gold-dark);
+  line-height: 1.15;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.9s var(--ease-expo) 0.6s forwards;
+}
+
+.hero-title em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--gold-rich);
+}
+
+.hero-sub {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  max-width: 48ch;
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: fadeUp 0.9s var(--ease-expo) 0.85s forwards;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeUp 0.9s var(--ease-expo) 1.1s forwards;
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 40px;
+  background: var(--gold);
+  color: var(--cream-white);
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: all 0.3s var(--ease-quart);
+}
+
+.btn-gold:hover {
+  background: var(--gold-rich);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px oklch(55% 0.1 68 / 0.2);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 40px;
+  background: transparent;
+  border: 1.5px solid var(--gold-light);
+  color: var(--gold-rich);
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: all 0.3s var(--ease-quart);
+}
+
+.btn-outline:hover {
+  border-color: var(--gold);
+  background: oklch(65% 0.12 72 / 0.05);
+  transform: translateY(-2px);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: fadeIn 1s var(--ease-expo) 1.6s forwards;
+}
+
+.hero-scroll span {
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 10px;
+}
+
+.scroll-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold-light);
+  margin: 0 auto;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.collection-section {
+  padding: 100px 32px;
+  position: relative;
+}
+
+.collection-section:nth-child(even) {
+  background: var(--cream);
+}
+
+.section-intro {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 64px;
+}
+
+.section-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--gold-dark);
+  margin-bottom: 14px;
+}
+
+.section-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.gallery {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+}
+
+.gallery-3 { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+.gallery-4 { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+.gallery-2 { grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); }
+
+.product-tile {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.4s var(--ease-quart);
+}
+
+.product-tile:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px oklch(40% 0.04 68 / 0.1);
+  border-color: var(--gold-pale);
+}
+
+.tile-image {
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: var(--cream-warm);
+}
+
+.tile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-expo);
+}
+
+.product-tile:hover .tile-image img {
+  transform: scale(1.04);
+}
+
+.tile-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, oklch(20% 0.02 60 / 0.7) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-quart);
+  display: flex;
+  align-items: flex-end;
+  padding: 28px;
+}
+
+.product-tile:hover .tile-overlay { opacity: 1; }
+
+.tile-overlay-content {
+  transform: translateY(12px);
+  transition: transform 0.35s var(--ease-expo);
+}
+
+.product-tile:hover .tile-overlay-content { transform: translateY(0); }
+
+.tile-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--cream-white);
+  margin-bottom: 8px;
+}
+
+.tile-dm {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-pale);
+}
+
+.tile-dm svg { width: 14px; height: 14px; }
+
+.tile-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--gold-light);
+}
+
+.tile-placeholder svg { width: 40px; height: 40px; opacity: 0.5; }
+.tile-placeholder span {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.dm-banner {
+  padding: 80px 32px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--gold-dark), var(--brown-soft));
+  color: var(--cream-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.dm-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, oklch(60% 0.08 72 / 0.1), transparent 40%);
+  pointer-events: none;
+}
+
+.dm-banner h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.dm-banner p {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: oklch(85% 0.01 78);
+  margin-bottom: 36px;
+  position: relative;
+}
+
+.dm-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 44px;
+  background: var(--cream-white);
+  color: var(--gold-dark);
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s var(--ease-quart);
+  position: relative;
+}
+
+.dm-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px oklch(20% 0.02 60 / 0.3);
+}
+
+.qr-section {
+  padding: 100px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  max-width: 1000px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.qr-text {
+  max-width: 380px;
+}
+
+.qr-text h2 {
+  font-size: 2.4rem;
+  color: var(--gold-dark);
+  margin-bottom: 14px;
+}
+
+.qr-text p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.qr-handle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--gold-rich);
+  text-decoration: none;
+}
+
+.qr-handle:hover { text-decoration: underline; }
+
+.qr-image {
+  width: 220px;
+  height: 220px;
+  border-radius: 16px;
+  padding: 16px;
+  background: white;
+  box-shadow: 0 8px 32px oklch(50% 0.04 70 / 0.08);
+  border: 1px solid var(--border);
+}
+
+.qr-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+footer {
+  background: var(--brown-deep);
+  padding: 64px 32px 32px;
+  color: oklch(75% 0.01 72);
+}
+
+.footer-top {
+  max-width: 1100px;
+  margin: 0 auto 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-brand img {
+  height: 60px;
+  margin-bottom: 16px;
+  filter: brightness(1.3);
+}
+
+.footer-brand p {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  max-width: 30ch;
+  color: oklch(65% 0.01 72);
+}
+
+.footer-col h5 {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 16px;
+  font-family: 'Jost', sans-serif;
+}
+
+.footer-col a {
+  display: block;
+  font-size: 0.85rem;
+  color: oklch(65% 0.01 72);
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--gold-pale); }
+
+.footer-bottom {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-top: 24px;
+  border-top: 1px solid oklch(30% 0.015 55);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: oklch(50% 0.01 68);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.float-dm {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, oklch(50% 0.16 330), oklch(55% 0.15 15));
+  color: white;
+  text-decoration: none;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  box-shadow: 0 8px 28px oklch(40% 0.1 350 / 0.3);
+  transition: all 0.3s var(--ease-quart);
+}
+
+.float-dm:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 36px oklch(40% 0.12 350 / 0.4);
+}
+
+.float-dm svg { width: 18px; height: 18px; }
+
+@keyframes heroReveal {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-expo), transform 0.7s var(--ease-expo);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .header { padding: 12px 20px; }
+  .header-nav { display: none; }
+  .header-logo { height: 40px; }
+  .hero { padding: 100px 24px 60px; }
+  .hero-logo { width: 160px; }
+  .collection-section { padding: 72px 20px; }
+  .gallery-3, .gallery-4, .gallery-2 {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .tile-overlay { opacity: 1; }
+  .tile-overlay-content { transform: translateY(0); }
+  .qr-section {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+    padding: 72px 24px;
+  }
+  .footer-top { flex-direction: column; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .float-dm { bottom: 16px; right: 16px; padding: 12px 18px; }
+  .dm-banner { padding: 60px 24px; }
+}
+
+@media (max-width: 480px) {
+  .gallery-3, .gallery-4 { grid-template-columns: 1fr; gap: 16px; }
+  .gallery-2 { grid-template-columns: 1fr; }
+  .tile-image { aspect-ratio: 3/4; }
+}
+</style>
+</head>
+<body>
+
+<header class="header" id="header">
+  <img src="images/logo.png" alt="Ruth Jewels" class="header-logo">
+  <div class="header-nav">
+    <a href="#necklaces">Necklaces</a>
+    <a href="#chokers">Chokers</a>
+    <a href="#attigai">Attigai</a>
+    <a href="#haram">Haram</a>
+    <a href="https://www.instagram.com/ruth_jewels_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="header-dm">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+      DM to Order
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <img src="images/logo.png" alt="Ruth Jewels Logo" class="hero-logo">
+  <h1 class="hero-title">Jewels That <em>Empower</em> Every Story</h1>
+  <p class="hero-sub">Handcrafted South Indian temple jewellery for the modern woman who honours tradition. DM us on Instagram to order.</p>
+  <div class="hero-cta">
+    <a href="#necklaces" class="btn-gold">Explore Collection</a>
+    <a href="https://www.instagram.com/ruth_jewels_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="btn-outline">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+      @ruth_jewels_
+    </a>
+  </div>
+  <div class="hero-scroll">
+    <span>Discover</span>
+    <div class="scroll-dot"></div>
+  </div>
+</section>
+
+<section class="collection-section" id="attigai">
+  <div class="section-intro reveal">
+    <p class="section-eyebrow">Traditional South Indian</p>
+    <h2 class="section-title">Attigai Necklaces</h2>
+    <p class="section-desc">The quintessential bridal piece, intricately crafted with kemp stones and temple motifs that echo centuries of tradition.</p>
+  </div>
+  <div class="gallery gallery-4 reveal">
+    <div class="product-tile"><div class="tile-image"><img src="images/attigai-01.jpg" alt="Attigai Necklace" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Attigai 01</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Kemp Stone Attigai</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/attigai-02.jpg" alt="Attigai Necklace" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Attigai 02</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Pearl Drop Attigai</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/attigai-03.jpg" alt="Attigai Necklace" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Attigai 03</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Temple Attigai Set</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/attigai-04.jpg" alt="Attigai Necklace" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Attigai 04</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Antique Finish Attigai</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+  </div>
+</section>
+
+<section class="collection-section" id="necklaces">
+  <div class="section-intro reveal">
+    <p class="section-eyebrow">Sacred &amp; Timeless</p>
+    <h2 class="section-title">Mango Mala</h2>
+    <p class="section-desc">Traditional mango-motif necklaces adorned with Lakshmi pendants, embodying prosperity and divine grace.</p>
+  </div>
+  <div class="gallery gallery-2 reveal">
+    <div class="product-tile"><div class="tile-image"><img src="images/mango-mala-01.jpg" alt="Mango Mala" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Mango Mala 01</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Mango Mala with Lekshmi Pendant</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/mango-mala-02.jpg" alt="Mango Mala" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Mango Mala 02</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Kemp Mango Mala Set</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+  </div>
+</section>
+
+<section class="collection-section" id="chokers">
+  <div class="section-intro reveal">
+    <p class="section-eyebrow">Modern Elegance</p>
+    <h2 class="section-title">Lotus Chokers</h2>
+    <p class="section-desc">Delicate lotus-motif chokers with emerald accents, designed to sit gracefully at the neckline.</p>
+  </div>
+  <div class="gallery gallery-2 reveal">
+    <div class="product-tile"><div class="tile-image"><img src="images/choker-01.jpg" alt="Lotus Choker" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Choker 01</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">One Line Lotus Choker</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/choker-02.jpg" alt="Lotus Choker" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Choker 02</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Emerald Lotus Choker Set</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+  </div>
+</section>
+
+<section class="collection-section" id="haram">
+  <div class="section-intro reveal">
+    <p class="section-eyebrow">Timeless Tradition, Eternal Beauty</p>
+    <h2 class="section-title">Palakk Haram</h2>
+    <p class="section-desc">Grand coin necklaces with intricate detailing, paired with matching jhumka earrings for the complete bridal look.</p>
+  </div>
+  <div class="gallery gallery-3 reveal">
+    <div class="product-tile"><div class="tile-image"><img src="images/haram-01.jpg" alt="Palakk Haram" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Haram 01</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Palakk Haram Set</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/haram-02.jpg" alt="Temple Haram" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Haram 02</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Navratna Temple Haram</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/haram-03.jpg" alt="Lakshmi Haram" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Haram 03</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Lakshmi Long Haram</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+  </div>
+</section>
+
+<section class="collection-section" id="temple-sets">
+  <div class="section-intro reveal">
+    <p class="section-eyebrow">Heritage Collection</p>
+    <h2 class="section-title">Temple Necklace Sets</h2>
+    <p class="section-desc">Complete sets featuring elaborate temple-work necklaces with matching jhumkas, perfect for weddings and festive occasions.</p>
+  </div>
+  <div class="gallery gallery-4 reveal">
+    <div class="product-tile"><div class="tile-image"><img src="images/necklace-01.jpg" alt="Temple Necklace Set" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Necklace 01</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Lakshmi Temple Set</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/necklace-02.jpg" alt="Temple Necklace Set" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Necklace 02</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Kemp Stone Bridal Set</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/necklace-03.jpg" alt="Temple Necklace Set" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Necklace 03</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Ruby Emerald Set</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/necklace-04.jpg" alt="Temple Necklace Set" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Necklace 04</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Pearl Temple Necklace</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/necklace-05.jpg" alt="Temple Necklace Set" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Necklace 05</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Antique Coin Necklace</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/necklace-06.jpg" alt="Temple Necklace Set" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Necklace 06</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Multi-Stone Temple Set</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/necklace-07.jpg" alt="Temple Necklace Set" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Necklace 07</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Kemp Cascade Necklace</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/necklace-08.jpg" alt="Temple Necklace Set" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Necklace 08</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Heritage Gold Set</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+  </div>
+</section>
+
+<section class="collection-section" id="accessories">
+  <div class="section-intro reveal">
+    <p class="section-eyebrow">Complete Your Look</p>
+    <h2 class="section-title">Earrings &amp; Bangles</h2>
+    <p class="section-desc">Statement jhumkas, chandbalis, and ornate bangles to complement every outfit.</p>
+  </div>
+  <div class="gallery gallery-4 reveal">
+    <div class="product-tile"><div class="tile-image"><img src="images/earring-01.jpg" alt="Jhumka Earrings" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Earring 01</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Antique Gold Jhumkas</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/earring-02.jpg" alt="Chandbali" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Earring 02</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Pearl Drop Chandbali</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/bangle-01.jpg" alt="Bangles" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Bangle 01</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Ruby Studded Bangles</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/bangle-02.jpg" alt="Bangles" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Bangle 02</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Gold Plated Kada Pair</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+  </div>
+</section>
+
+<section class="collection-section">
+  <div class="section-intro reveal">
+    <p class="section-eyebrow">Everyday Grace</p>
+    <h2 class="section-title">Signature Necklaces</h2>
+    <p class="section-desc">Versatile pieces that transition effortlessly from daily wear to special occasions.</p>
+  </div>
+  <div class="gallery gallery-3 reveal">
+    <div class="product-tile"><div class="tile-image"><img src="images/signature-01.jpg" alt="Necklace" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Signature 01</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Emerald Drop Necklace</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/signature-02.jpg" alt="Necklace" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Signature 02</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Pearl Layered Necklace</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/signature-03.jpg" alt="Necklace" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Signature 03</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Traditional Coin Set</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/signature-04.jpg" alt="Necklace" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Signature 04</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Kundan Polki Set</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/signature-05.jpg" alt="Necklace" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Signature 05</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Ruby Gold Necklace</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+    <div class="product-tile"><div class="tile-image"><img src="images/signature-06.jpg" alt="Necklace" onerror="this.parentElement.innerHTML=\'<div class=tile-placeholder><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z&quot;/></svg><span>Signature 06</span></div>\'"></div><div class="tile-overlay"><div class="tile-overlay-content"><p class="tile-name">Antique Finish Necklace</p><span class="tile-dm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg> DM to Order</span></div></div></div>
+  </div>
+</section>
+
+<div class="dm-banner">
+  <h2>Love Something? DM Us.</h2>
+  <p>All purchases happen through Instagram direct messages. Send us a message with what caught your eye.</p>
+  <a href="https://www.instagram.com/ruth_jewels_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="dm-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+    Message @ruth_jewels_
+  </a>
+</div>
+
+<section class="qr-section">
+  <div class="qr-text">
+    <h2>Scan to Follow</h2>
+    <p>Open your camera and scan the QR code to find us instantly on Instagram. New collections drop every week.</p>
+    <a href="https://www.instagram.com/ruth_jewels_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="qr-handle">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+      @ruth_jewels_
+    </a>
+  </div>
+  <div class="qr-image">
+    <img src="images/insta-qr.png" alt="Scan to follow @ruth_jewels_ on Instagram">
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="images/logo.png" alt="Ruth Jewels" onerror="this.style.display='none'">
+      <p>Handcrafted South Indian temple jewellery for the modern woman who honours tradition.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Collections</h5>
+      <a href="#attigai">Attigai Necklaces</a>
+      <a href="#necklaces">Mango Mala</a>
+      <a href="#chokers">Lotus Chokers</a>
+      <a href="#haram">Palakk Haram</a>
+      <a href="#temple-sets">Temple Sets</a>
+    </div>
+    <div class="footer-col">
+      <h5>Order</h5>
+      <a href="https://www.instagram.com/ruth_jewels_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram DM</a>
+      <a href="#">WhatsApp</a>
+      <a href="#">Shipping Info</a>
+      <a href="#">Returns &amp; Exchange</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Ruth Jewels. All rights reserved.</span>
+    <span>Handcrafted with love in India</span>
+  </div>
+</footer>
+
+<a href="https://www.instagram.com/ruth_jewels_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="float-dm">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+  DM to Order
+</a>
+
+<script>
+window.addEventListener('scroll', () => {
+  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 80);
+});
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      if (entry.target.classList.contains('gallery')) {
+        entry.target.querySelectorAll('.product-tile').forEach((tile, i) => {
+          tile.style.transitionDelay = `${i * 80}ms`;
+          tile.style.opacity = '0';
+          tile.style.transform = 'translateY(24px)';
+          setTimeout(() => {
+            tile.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+            tile.style.opacity = '1';
+            tile.style.transform = 'translateY(0)';
+          }, i * 80 + 100);
+        });
+      }
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+</body>
+</html>
