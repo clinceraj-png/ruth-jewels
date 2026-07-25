@@ -67,8 +67,9 @@ h1, h2, h3, h4, h5 {
   box-shadow: 0 1px 0 var(--border);
 }
 
-    .header-logo { height: 52px; width: auto; transition: height 0.3s var(--ease-quart); }
-    .header.scrolled .header-logo { height: 42px; }
+    .header-logo { display: inline-flex; }
+    .header-logo img { height: 52px; width: auto; transition: height 0.3s var(--ease-quart); }
+    .header.scrolled .header-logo img { height: 42px; }
 
     .header-nav { display: flex; align-items: center; gap: 36px; }
     .header-nav a {
@@ -610,7 +611,7 @@ footer {
 @media (max-width: 768px) {
   .header { padding: 12px 20px; }
   .header-nav { display: none; }
-  .header-logo { height: 40px; }
+  .header-logo img { height: 40px; }
   .hero { padding: 100px 24px 60px; }
   .hero-logo { width: 160px; }
   .collection-section { padding: 72px 20px; }
@@ -650,13 +651,14 @@ footer {
     <a href="https://www.instagram.com/ruth_jewels_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="header-dm">DM to Order</a>
   </header>
 
+<main>
 <section class="hero">
-  <img src="images/logo.png" alt="Ruth Jewels Logo" class="hero-logo">
+  <img src="logo.png" alt="Ruth Jewels Logo" class="hero-logo">
   <h1 class="hero-title">Jewels That <em>Empower</em> Every Story</h1>
   <p class="hero-sub">Handcrafted South Indian temple jewellery for the modern woman who honours tradition. DM us on Instagram to order.</p>
   <div class="hero-cta">
-    <a href="#necklaces" class="btn-gold">Explore Collection</a>
-    <a href="https://www.instagram.com/ruth_jewels_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="btn-outline">
+    <a href="#collections" class="btn-gold">Explore Collection</a>
+    <a href="https://www.instagram.com/ruth_jewels_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="btn-outline">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
       @ruth_jewels_
     </a>
@@ -667,51 +669,50 @@ footer {
   </div>
 </section>
 
-    <section class="section" id="collections">
-      <div class="section-inner">
-        <div class="section-heading">
-          <h2>Featured Collections</h2>
-          <p>Every piece is made to celebrate heritage with a modern, elegant finish.</p>
-        </div>
-        <div class="gallery-grid">
-          <article class="gallery-card"><img src="ATTIGAI-01.jpeg" alt="Attigai 01"><div class="card-caption"><h3>Attigai</h3><p>Elegant layered charm.</p></div></article>
-          <article class="gallery-card"><img src="ATTIGAI-04.png" alt="Attigai 04"><div class="card-caption"><h3>Attigai</h3><p>Refined gold detailing.</p></div></article>
-          <article class="gallery-card"><img src="ATTIGAI-05.png" alt="Attigai 05"><div class="card-caption"><h3>Attigai</h3><p>Soft sculptural form.</p></div></article>
-          <article class="gallery-card"><img src="ATTIGAI-08.png" alt="Attigai 08"><div class="card-caption"><h3>Attigai</h3><p>Graceful heritage-inspired design.</p></div></article>
-          <article class="gallery-card"><img src="ATTIGAI-09.png" alt="Attigai 09"><div class="card-caption"><h3>Attigai</h3><p>Classic charm with modern polish.</p></div></article>
-          <article class="gallery-card"><img src="ATTIGAI-11.png" alt="Attigai 11"><div class="card-caption"><h3>Attigai</h3><p>Fine detailing, striking balance.</p></div></article>
-          <article class="gallery-card"><img src="ATTIGAI-14.png" alt="Attigai 14"><div class="card-caption"><h3>Attigai</h3><p>Bold yet graceful silhouette.</p></div></article>
-          <article class="gallery-card"><img src="COIN%20NECKLACE-01.jpeg" alt="Coin Necklace 01"><div class="card-caption"><h3>Coin Necklace</h3><p>Traditional charm, heirloom feel.</p></div></article>
-          <article class="gallery-card"><img src="COIN%20NECKLACE-02.png" alt="Coin Necklace 02"><div class="card-caption"><h3>Coin Necklace</h3><p>Classic statement with warmth.</p></div></article>
-          <article class="gallery-card"><img src="FLORAL%20AD%20NECKLACE-01.png" alt="Floral Ad Necklace 01"><div class="card-caption"><h3>Floral Ad Necklace</h3><p>Botanical detail with elegance.</p></div></article>
-          <article class="gallery-card"><img src="GOLD%20AND%20GREEN-01.png" alt="Gold And Green 01"><div class="card-caption"><h3>Gold and Green</h3><p>Vibrant, artistic, and timeless.</p></div></article>
-          <article class="gallery-card"><img src="MANGO%20MALA%20WITH%20LEKSHMI%20PENDANT-01.png" alt="Mango Mala With Lekshmi Pendant 01"><div class="card-caption"><h3>Mango Mala</h3><p>Layered beauty and meaning.</p></div></article>
-          <article class="gallery-card"><img src="PALAKK%20HARAM-01.png" alt="Palakk Haram 01"><div class="card-caption"><h3>Palakk Haram</h3><p>Graceful ceremonial elegance.</p></div></article>
-          <article class="gallery-card"><img src="TRADITIONAL-01.png" alt="Traditional 01"><div class="card-caption"><h3>Traditional</h3><p>Timeless everyday splendour.</p></div></article>
-          <article class="gallery-card"><img src="LAKSHMI%20CHOKER-01.png" alt="Lakshmi Choker 01"><div class="card-caption"><h3>Lakshmi Choker</h3><p>Bold, ornate, and celebratory.</p></div></article>
-          <article class="gallery-card"><img src="ONE%20LINE%20LOTUS%20CHOLER-03.png" alt="One Line Lotus Choler 03"><div class="card-caption"><h3>One Line Lotus</h3><p>Contemporary minimalism.</p></div></article>
-          <article class="gallery-card"><img src="ONE%20LINE%20LOTUS%20CHOCKER-06.png" alt="One Line Lotus Chocker 06"><div class="card-caption"><h3>One Line Lotus</h3><p>Elegant and fluid.</p></div></article>
-        </div>
+    <section class="collection-section" id="collections">
+      <div class="section-intro reveal"><p class="section-eyebrow">Signature collection</p><h2 class="section-title">Temple-inspired treasures</h2><p class="section-desc">Every piece is made to celebrate heritage with a modern, elegant finish.</p></div>
+      <div class="gallery gallery-4">
+        <article class="product-tile reveal"><div class="tile-image"><img src="ATTIGAI-01.jpeg" alt="Attigai necklace"></div><div class="tile-overlay"><div class="tile-overlay-content"><h3 class="tile-name">Attigai</h3><span class="tile-dm">Inquire on Instagram</span></div></div></article>
+        <article class="product-tile reveal"><div class="tile-image"><img src="ATTIGAI-04.png" alt="Attigai necklace with refined gold detailing"></div><div class="tile-overlay"><div class="tile-overlay-content"><h3 class="tile-name">Attigai</h3><span class="tile-dm">Inquire on Instagram</span></div></div></article>
+        <article class="product-tile reveal"><div class="tile-image"><img src="ATTIGAI-05.png" alt="Sculptural Attigai necklace"></div><div class="tile-overlay"><div class="tile-overlay-content"><h3 class="tile-name">Attigai</h3><span class="tile-dm">Inquire on Instagram</span></div></div></article>
+        <article class="product-tile reveal"><div class="tile-image"><img src="ATTIGAI-08.png" alt="Heritage-inspired Attigai necklace"></div><div class="tile-overlay"><div class="tile-overlay-content"><h3 class="tile-name">Attigai</h3><span class="tile-dm">Inquire on Instagram</span></div></div></article>
+        <article class="product-tile reveal"><div class="tile-image"><img src="ATTIGAI-09.png" alt="Classic Attigai necklace"></div><div class="tile-overlay"><div class="tile-overlay-content"><h3 class="tile-name">Attigai</h3><span class="tile-dm">Inquire on Instagram</span></div></div></article>
+        <article class="product-tile reveal"><div class="tile-image"><img src="ATTIGAI-11.png" alt="Detailed Attigai necklace"></div><div class="tile-overlay"><div class="tile-overlay-content"><h3 class="tile-name">Attigai</h3><span class="tile-dm">Inquire on Instagram</span></div></div></article>
+        <article class="product-tile reveal"><div class="tile-image"><img src="ATTIGAI-14.png" alt="Bold Attigai necklace"></div><div class="tile-overlay"><div class="tile-overlay-content"><h3 class="tile-name">Attigai</h3><span class="tile-dm">Inquire on Instagram</span></div></div></article>
       </div>
     </section>
 
-    <section class="section cta" id="order">
-      <div class="section-inner cta-grid">
-        <div class="cta-card">
-          <h3>Make it yours</h3>
-          <p>DM us on Instagram to place an order, request a custom piece, or inquire about a collection.</p>
-          <a class="btn btn-gold" href="https://www.instagram.com/ruth_jewels_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">Message @ruth_jewels_</a>
-          <a class="btn btn-outline" href="https://www.instagram.com/ruth_jewels_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">Visit Instagram</a>
-        </div>
-        <div class="cta-card">
-          <img class="cta-qr" src="insta-qr.png" alt="Scan to follow Ruth Jewels on Instagram">
-        </div>
+    <section class="collection-section">
+      <div class="section-intro reveal"><p class="section-eyebrow">More to adore</p><h2 class="section-title">Jewellery for every story</h2><p class="section-desc">Explore ceremonial classics and contemporary favourites.</p></div>
+      <div class="gallery gallery-4">
+        <article class="product-tile reveal"><div class="tile-image"><img src="COIN%20NECKLACE-01.jpeg" alt="Coin necklace"></div><div class="tile-overlay"><div class="tile-overlay-content"><h3 class="tile-name">Coin Necklace</h3><span class="tile-dm">Inquire on Instagram</span></div></div></article>
+        <article class="product-tile reveal"><div class="tile-image"><img src="COIN%20NECKLACE-02.png" alt="Coin necklace in gold"></div><div class="tile-overlay"><div class="tile-overlay-content"><h3 class="tile-name">Coin Necklace</h3><span class="tile-dm">Inquire on Instagram</span></div></div></article>
+        <article class="product-tile reveal"><div class="tile-image"><img src="FLORAL%20AD%20NECKLACE-01.png" alt="Floral AD necklace"></div><div class="tile-overlay"><div class="tile-overlay-content"><h3 class="tile-name">Floral AD Necklace</h3><span class="tile-dm">Inquire on Instagram</span></div></div></article>
+        <article class="product-tile reveal"><div class="tile-image"><img src="GOLD%20AND%20GREEN-01.png" alt="Gold and green necklace"></div><div class="tile-overlay"><div class="tile-overlay-content"><h3 class="tile-name">Gold and Green</h3><span class="tile-dm">Inquire on Instagram</span></div></div></article>
+        <article class="product-tile reveal"><div class="tile-image"><img src="MANGO%20MALA%20WITH%20LEKSHMI%20PENDANT-01.png" alt="Mango mala with Lakshmi pendant"></div><div class="tile-overlay"><div class="tile-overlay-content"><h3 class="tile-name">Mango Mala</h3><span class="tile-dm">Inquire on Instagram</span></div></div></article>
+        <article class="product-tile reveal"><div class="tile-image"><img src="PALAKK%20HARAM-01.png" alt="Palakk haram"></div><div class="tile-overlay"><div class="tile-overlay-content"><h3 class="tile-name">Palakk Haram</h3><span class="tile-dm">Inquire on Instagram</span></div></div></article>
+        <article class="product-tile reveal"><div class="tile-image"><img src="TRADITIONAL-01.png" alt="Traditional necklace"></div><div class="tile-overlay"><div class="tile-overlay-content"><h3 class="tile-name">Traditional</h3><span class="tile-dm">Inquire on Instagram</span></div></div></article>
+        <article class="product-tile reveal"><div class="tile-image"><img src="LAKSHMI%20CHOKER-01.png" alt="Lakshmi choker"></div><div class="tile-overlay"><div class="tile-overlay-content"><h3 class="tile-name">Lakshmi Choker</h3><span class="tile-dm">Inquire on Instagram</span></div></div></article>
+        <article class="product-tile reveal"><div class="tile-image"><img src="ONE%20LINE%20LOTUS%20CHOLER-03.png" alt="One line lotus choker"></div><div class="tile-overlay"><div class="tile-overlay-content"><h3 class="tile-name">One Line Lotus</h3><span class="tile-dm">Inquire on Instagram</span></div></div></article>
+        <article class="product-tile reveal"><div class="tile-image"><img src="ONE%20LINE%20LOTUS%20CHOCKER-06.png" alt="One line lotus choker"></div><div class="tile-overlay"><div class="tile-overlay-content"><h3 class="tile-name">One Line Lotus</h3><span class="tile-dm">Inquire on Instagram</span></div></div></article>
       </div>
     </section>
+
+    <section class="dm-banner" id="order"><h2>Make it yours</h2><p>DM us to order, request a custom piece, or inquire about a collection.</p><a class="dm-btn" href="https://www.instagram.com/ruth_jewels_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">Message @ruth_jewels_</a></section>
+    <section class="qr-section"><div class="qr-text reveal"><p class="section-eyebrow">Stay connected</p><h2>Follow our story</h2><p>See new designs, behind-the-scenes moments, and the latest pieces on Instagram.</p><a class="qr-handle" href="https://www.instagram.com/ruth_jewels_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">@ruth_jewels_</a></div><div class="qr-image reveal"><img src="insta-qr.png" alt="Scan to follow Ruth Jewels on Instagram"></div></section>
   </main>
 
   <footer>
-    <p>© 2026 Ruth Jewels • Crafted with love and heritage</p>
+    <div class="footer-top"><div class="footer-brand"><img src="logo.png" alt="Ruth Jewels"><p>Handcrafted South Indian temple jewellery, made to honour every story.</p></div><div class="footer-col"><h5>Explore</h5><a href="#collections">Collections</a><a href="#order">Order</a></div><div class="footer-col"><h5>Connect</h5><a href="https://www.instagram.com/ruth_jewels_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">Instagram</a></div></div>
+    <div class="footer-bottom"><span>© 2026 Ruth Jewels</span><span>Crafted with love and heritage</span></div>
   </footer>
+  <a class="float-dm" href="https://www.instagram.com/ruth_jewels_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">DM to order</a>
+  <script>
+    const header = document.querySelector('.header');
+    const updateHeader = () => header.classList.toggle('scrolled', window.scrollY > 24);
+    updateHeader(); window.addEventListener('scroll', updateHeader, { passive: true });
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }), { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(item => observer.observe(item));
+  </script>
 </body>
 </html>
