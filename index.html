@@ -3,25 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RUTH JEWELS | Jewels That Empower Every Story</title>
+<title>RUTH JEWELS | Luxury Temple Jewellery for the Modern Bride</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --cream-white: oklch(97.5% 0.006 78);
-  --cream: oklch(94% 0.012 78);
-  --cream-warm: oklch(91% 0.018 76);
-  --gold-pale: oklch(82% 0.06 78);
-  --gold-light: oklch(75% 0.09 76);
-  --gold: oklch(65% 0.12 72);
-  --gold-rich: oklch(55% 0.11 68);
-  --gold-dark: oklch(42% 0.08 62);
-  --brown-soft: oklch(35% 0.04 58);
-  --brown-deep: oklch(22% 0.02 55);
-  --text-body: oklch(30% 0.015 60);
-  --text-muted: oklch(50% 0.015 68);
-  --text-faint: oklch(62% 0.01 72);
-  --border: oklch(89% 0.012 76);
-  --surface: oklch(96% 0.005 78);
+  --ivory: #fff8ef;
+  --ivory-soft: #f8efe2;
+  --ivory-warm: #f4e4d3;
+  --gold-pale: #e5c69d;
+  --gold: #c89b58;
+  --gold-rich: #b47f36;
+  --bronze: #5b432f;
+  --bronze-deep: #3f2a1f;
+  --charcoal: #241a16;
+  --text-body: #3a3028;
+  --text-muted: #6b5d52;
+  --text-faint: #8f7d6d;
+  --border: rgba(170, 143, 110, 0.16);
+  --surface: rgba(255, 255, 250, 0.92);
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-quart: cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -31,12 +30,20 @@
 
 body {
   font-family: 'Jost', system-ui, sans-serif;
-  background: var(--cream-white);
+  background: radial-gradient(circle at top, rgba(255,255,255,0.96), rgba(246,235,220,0.95) 45%), linear-gradient(180deg, #fff9f1 0%, #f2e5d4 42%, #ecdbc8 100%);
   color: var(--text-body);
   font-optical-sizing: auto;
-  line-height: 1.6;
+  line-height: 1.65;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 20% 10%, rgba(255,255,255,0.65), transparent 18%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.45), transparent 16%);
 }
 
 h1, h2, h3, h4, h5 {
@@ -46,7 +53,7 @@ h1, h2, h3, h4, h5 {
 }
 
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-track { background: rgba(255, 245, 235, 0.9); }
 ::-webkit-scrollbar-thumb { background: var(--gold-pale); border-radius: 3px; }
 
     .header {
@@ -61,10 +68,10 @@ h1, h2, h3, h4, h5 {
     }
 
 .header.scrolled {
-  background: oklch(97% 0.006 78 / 0.94);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(16px);
   padding: 12px 40px;
-  box-shadow: 0 1px 0 var(--border);
+  box-shadow: 0 1px 0 rgba(170, 143, 110, 0.18);
 }
 
     .header-logo { display: inline-flex; }
@@ -89,7 +96,7 @@ h1, h2, h3, h4, h5 {
   gap: 8px;
   padding: 10px 24px;
   background: var(--gold);
-  color: var(--cream-white);
+  color: var(--ivory-soft);
   border-radius: 100px;
   font-size: 0.72rem;
   font-weight: 500;
@@ -102,7 +109,7 @@ h1, h2, h3, h4, h5 {
 .header-dm:hover {
   background: var(--gold-rich);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px oklch(55% 0.1 70 / 0.2);
+  box-shadow: 0 6px 20px rgba(180, 135, 82, 0.18);
 }
 
 .hero {
@@ -112,23 +119,43 @@ h1, h2, h3, h4, h5 {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 120px 32px 80px;
-  background: radial-gradient(ellipse 80% 60% at 50% 40%, oklch(93% 0.015 78), var(--cream-white));
+  padding: 140px 32px 100px;
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.95), rgba(244, 225, 201, 0.9) 40%), linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(243, 231, 214, 0.96));
   position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 120%, rgba(196, 155, 88, 0.18), transparent 30%);
+  pointer-events: none;
 }
 
 .hero-logo {
-  width: clamp(180px, 25vw, 280px);
+  width: clamp(180px, 20vw, 240px);
   height: auto;
-  margin-bottom: 40px;
+  margin-bottom: 42px;
   opacity: 0;
   animation: heroReveal 1.2s var(--ease-expo) 0.2s forwards;
+}
+
+.hero-sup {
+  font-size: 0.8rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-rich);
+  font-weight: 600;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.9s var(--ease-expo) 0.25s forwards;
 }
 
 .hero-title {
   font-size: clamp(2.4rem, 6vw, 4.5rem);
   font-weight: 300;
-  color: var(--gold-dark);
+  color: var(--bronze-deep);
   line-height: 1.15;
   margin-bottom: 20px;
   opacity: 0;
@@ -164,16 +191,21 @@ h1, h2, h3, h4, h5 {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 16px 40px;
-  background: var(--gold);
-  color: var(--cream-white);
+  padding: 16px 42px;
+  background: linear-gradient(135deg, var(--gold), #ae823a);
+  color: #fffdfa;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 999px;
   font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  transition: all 0.3s var(--ease-quart);
+  box-shadow: 0 18px 40px rgba(188, 141, 74, 0.18);
+  transition: transform 0.3s var(--ease-quart), box-shadow 0.3s var(--ease-quart), background 0.3s var(--ease-quart);
+}
+.btn-gold:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 22px 48px rgba(188, 141, 74, 0.26);
 }
 
 .btn-gold:hover {
@@ -188,20 +220,19 @@ h1, h2, h3, h4, h5 {
   gap: 10px;
   padding: 16px 40px;
   background: transparent;
-  border: 1.5px solid var(--gold-light);
-  color: var(--gold-rich);
+  border: 1.5px solid rgba(181, 138, 84, 0.8);
+  color: var(--bronze);
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 999px;
   font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   transition: all 0.3s var(--ease-quart);
 }
-
 .btn-outline:hover {
   border-color: var(--gold);
-  background: oklch(65% 0.12 72 / 0.05);
+  background: rgba(255, 245, 230, 0.88);
   transform: translateY(-2px);
 }
 
@@ -238,7 +269,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .collection-section:nth-child(even) {
-  background: var(--cream);
+  background: rgba(255, 250, 244, 0.92);
 }
 
 .section-intro {
@@ -248,18 +279,19 @@ h1, h2, h3, h4, h5 {
 }
 
 .section-eyebrow {
-  font-size: 0.7rem;
-  font-weight: 500;
+  font-size: 0.72rem;
+  font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 12px;
+  color: var(--gold-rich);
+  margin-bottom: 14px;
 }
 
 .section-title {
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  color: var(--gold-dark);
-  margin-bottom: 14px;
+  font-size: clamp(2.1rem, 4vw, 3.4rem);
+  color: var(--bronze-deep);
+  margin-bottom: 16px;
+  line-height: 1.05;
 }
 
 .section-desc {
@@ -282,24 +314,24 @@ h1, h2, h3, h4, h5 {
 
 .product-tile {
   position: relative;
-  border-radius: 8px;
+  border-radius: 18px;
   overflow: hidden;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 250, 0.96);
+  border: 1px solid rgba(157, 125, 90, 0.14);
   cursor: pointer;
-  transition: all 0.4s var(--ease-quart);
+  transition: transform 0.4s var(--ease-quart), box-shadow 0.4s var(--ease-quart), border-color 0.4s var(--ease-quart);
 }
 
 .product-tile:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 50px oklch(40% 0.04 68 / 0.1);
-  border-color: var(--gold-pale);
+  transform: translateY(-8px);
+  box-shadow: 0 24px 70px rgba(92, 59, 42, 0.12);
+  border-color: rgba(190, 145, 84, 0.26);
 }
 
 .tile-image {
   aspect-ratio: 4/5;
   overflow: hidden;
-  background: var(--cream-warm);
+  background: linear-gradient(180deg, rgba(255, 250, 244, 0.95), rgba(238, 224, 205, 0.9));
 }
 
 .tile-image img {
@@ -316,7 +348,7 @@ h1, h2, h3, h4, h5 {
 .tile-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, oklch(20% 0.02 60 / 0.7) 0%, transparent 50%);
+  background: linear-gradient(to top, rgba(36, 26, 18, 0.62) 0%, transparent 55%);
   opacity: 0;
   transition: opacity 0.35s var(--ease-quart);
   display: flex;
@@ -335,21 +367,21 @@ h1, h2, h3, h4, h5 {
 
 .tile-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem;
+  font-size: 1.32rem;
   font-weight: 500;
-  color: var(--cream-white);
+  color: #fffdfa;
   margin-bottom: 8px;
 }
 
 .tile-dm {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--gold-pale);
+  color: rgba(255, 241, 225, 0.95);
 }
 
 .tile-dm svg { width: 14px; height: 14px; }
@@ -376,8 +408,8 @@ h1, h2, h3, h4, h5 {
 .dm-banner {
   padding: 80px 32px;
   text-align: center;
-  background: linear-gradient(135deg, var(--gold-dark), var(--brown-soft));
-  color: var(--cream-white);
+  background: linear-gradient(135deg, rgba(180, 128, 74, 0.98), rgba(90, 62, 38, 0.95));
+  color: var(--ivory);
   position: relative;
   overflow: hidden;
 }
@@ -389,21 +421,21 @@ h1, h2, h3, h4, h5 {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle at 30% 50%, oklch(60% 0.08 72 / 0.1), transparent 40%);
+  background: radial-gradient(circle at 30% 50%, rgba(196, 155, 88, 0.12), transparent 40%);
   pointer-events: none;
 }
 
 .dm-banner h2 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
   font-weight: 300;
   margin-bottom: 16px;
   position: relative;
 }
 
 .dm-banner p {
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   font-weight: 300;
-  color: oklch(85% 0.01 78);
+  color: rgba(255, 245, 229, 0.92);
   margin-bottom: 36px;
   position: relative;
 }
@@ -413,8 +445,8 @@ h1, h2, h3, h4, h5 {
   align-items: center;
   gap: 10px;
   padding: 16px 44px;
-  background: var(--cream-white);
-  color: var(--gold-dark);
+  background: var(--ivory-soft);
+  color: var(--bronze-deep);
   text-decoration: none;
   border-radius: 4px;
   font-size: 0.8rem;
@@ -506,17 +538,14 @@ footer {
 .footer-brand img {
   height: 60px;
   margin-bottom: 16px;
-  filter: brightness(1.3);
-}
+    filter: brightness(1.2);
+  }
 
-.footer-brand p {
-  font-size: 0.85rem;
-  line-height: 1.7;
-  max-width: 30ch;
-  color: oklch(65% 0.01 72);
-}
-
-.footer-col h5 {
+  .footer-brand p {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    max-width: 30ch;
+    color: rgba(115, 90, 72, 0.9);
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.15em;
@@ -653,18 +682,18 @@ footer {
 
 <main>
 <section class="hero">
-  <img src="logo.png" alt="Ruth Jewels Logo" class="hero-logo">
+  <img src="images/logo.png" alt="Ruth Jewels Logo" class="hero-logo">
   <h1 class="hero-title">Jewels That <em>Empower</em> Every Story</h1>
   <p class="hero-sub">Handcrafted South Indian temple jewellery for the modern woman who honours tradition. DM us on Instagram to order.</p>
   <div class="hero-cta">
-    <a href="#collections" class="btn-gold">Explore Collection</a>
-    <a href="https://www.instagram.com/ruth_jewels_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="btn-outline">
+    <a href="#necklaces" class="btn-gold">Explore Collection</a>
+    <a href="https://www.instagram.com/ruth_jewels_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="btn-outline">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
-      @ruth_jewels_
+      Follow @ruth_jewels_
     </a>
   </div>
   <div class="hero-scroll">
-    <span>Discover</span>
+    <span>Scroll to Experience</span>
     <div class="scroll-dot"></div>
   </div>
 </section>
