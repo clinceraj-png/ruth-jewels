@@ -1,0 +1,5 @@
+{
+    "gitlens.graph.showRemoteNames": true,
+    "gitlens.graph.dateFormat": "DDMMYYYY",
+    "gitlens.graph.layout": "editor"
+}
